@@ -1,0 +1,70 @@
+<div class="card mt-4">
+  <div class="table-responsive">
+    <table class="table beautiful-table">
+      <thead>
+      <tr class="bg-gradient-primary">
+        <th class="text-center">{{ 'CONTESTS.TITLE' | translate }}</th>
+        <th class="text-center">{{ 'CONTESTS.START_TIME' | translate }}</th>
+        <th class="text-center">{{ 'CONTESTS.FINISH_TIME' | translate }}</th>
+        <th class="text-center">{{ 'CONTESTS.CATEGORY' | translate }}</th>
+        <th class="text-center">
+          <div>
+            {{ 'CONTESTS.PROBLEMS_COUNT' | translate }}
+          </div>
+        </th>
+        <th class="text-center">
+          <span>
+            {{ 'CONTESTS.CONTESTANTS_COUNT' | translate }}
+          </span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (contest of contests;track contest) {
+          <tr>
+            <td class="text-center text-dark">
+              <keen-icon name="cup" color="primary"></keen-icon>
+              <a [routerLink]="['/contests', contest.id]">
+                {{ contest.title }}
+              </a>
+            </td>
+            <td class="text-center text-dark">
+              <u>{{ contest.startTime | date:'y/MM/dd' }}</u>
+              <br>
+              <u>{{ contest.startTime | date:'H:mm' }}</u>
+            </td>
+            <td class="text-center text-dark">
+              <u>{{ contest.finishTime | date:'y/MM/dd' }}</u>
+              <br>
+              <u>{{ contest.finishTime | date:'H:mm' }}</u>
+            </td>
+            <td class="text-center">
+              <span class="badge badge-primary badge-pill">
+                {{ contest.categoryTitle }}
+              </span>
+            </td>
+            <td class="text-center">
+              <span class="badge badge-primary">
+                {{ contest.problemsCount }}
+              </span>
+            </td>
+            <td class="text-center text-primary">
+              <div class="avatar p-50 m-0 mb-1">
+                <div class="avatar-content">
+                  <i data-feather="users" class="font-medium-3"></i>
+                </div>
+              </div>
+              <h5 class="font-weight-bolder">
+                <span
+                  class="badge badge-primary"
+                  [countUp]="contest.contestantsCount"
+                  [options]="{ duration: 5, reanimateOnClick: false }">
+                </span>
+              </h5>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

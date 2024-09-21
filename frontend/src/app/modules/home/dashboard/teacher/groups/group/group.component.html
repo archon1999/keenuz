@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header bg-gradient-primary">
+    <div class="card-title">
+      {{ group.name }}
+    </div>
+    <app-add-student/>
+  </div>
+  <div class="align-items-center d-flex justify-content-between table-responsive beautiful-table">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>№</th>
+        <th>O'quvchi</th>
+        <th>Natija</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      @for( student of group.students; track student) {
+          <tr (click)="showStudent(student)">
+            <td class="text-dark text-center">{{ $index + 1 }}</td>
+            <td>{{ student.firstName }} {{ student.lastName }} ({{ student.username }})</td>
+            <td class="text-center"> {{ student.result }}</td>
+            <td class="text-right">
+              <button class="btn text-nowrap px-1" (click)="deleteStudent(student.id)">
+                <keen-icon name="trash" size="medium-3" color="danger"></keen-icon>
+              </button>
+            </td>
+          </tr>
+      }
+      </tbody>
+    </table>
+  </div>
+</div>

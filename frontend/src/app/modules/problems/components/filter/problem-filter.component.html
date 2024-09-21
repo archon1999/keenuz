@@ -1,0 +1,49 @@
+<div class="d-flex flex-column">
+    <div class="row">
+        <div class="col-9">
+            <input type="text" placeholder="Vazifa raqami yoki nomi bo'yicha qidiring" class="form-control search-input"/>
+        </div>
+        <div class="col-3">
+            <button ngbTooltip="Tasodifiy" class="btn btn-outline-dark w-100 align-items-center">
+                <keen-icon name="arrows-loop">
+                </keen-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-3">
+            <ng-select
+                    [items]="category"
+                    bindValue="code"
+                    bindLabel="name"
+                    placeholder="Yo'nalish"
+            />
+        </div>
+        <div class="col-3">
+            <ng-select
+                    [items]="status"
+                    bindValue="code"
+                    bindLabel="name"
+                    placeholder="Statusi"
+            />
+        </div>
+        <div class="col-3">
+            <ng-select
+                    [items]="difficulty"
+                    bindValue="code"
+                    bindLabel="name"
+                    placeholder="Qiyinchiligi"
+            />
+        </div>
+        <div class="col-3">
+            <ng-select
+                    [items]="ordering"
+                    bindValue="code"
+                    bindLabel="name"
+                    placeholder="Saralash"
+            />
+        </div>
+    </div>
+</div>
+
+<ng-select-css></ng-select-css>

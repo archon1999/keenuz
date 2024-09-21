@@ -1,0 +1,109 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="getContentHeader()"/>
+
+    <div class="content-wrapper container-xxl p-0">
+      <div class="content-body">
+        <section class="contests-colors">
+          <div class="bg-img" style="background-image: url({{ contest?.logo }});"></div>
+
+          <div class="contest-standings-top">
+            <div class="header">
+              <keen-icon class="mr-50" name="cup" size="large-1" type="duotone"/>
+              <div class="font-large-1 text-dark">
+                {{ contest?.title }}
+              </div>
+            </div>
+          </div>
+
+          <keen-table [loading]="isLoading && contestants.length == 0">
+            <ng-container header>
+              <tr>
+                <th class="text-center">#</th>
+                <th>{{ 'CONTESTS.CONTESTANT' | translate }}</th>
+                <th class="text-center">
+                  {{ 'CONTESTS.POINTS' | translate }}
+                </th>
+                <th class="text-center">{{ 'CONTESTS.PENALTIES' | translate }}</th>
+                @for (contestProblem of contestProblems;track contestProblem) {
+                  <th class="text-center" style="white-space: nowrap;">
+                    <div
+                      [ngbTooltip]="contestProblem.problem.title"
+                      tooltipClass="tooltip-primary"
+                      container="body"
+                      class="text-white">
+                      {{ contestProblem.symbol }}
+                      <span>
+              </span>
+                    </div>
+                  </th>
+                }
+              </tr>
+            </ng-container>
+
+            <ng-container body>
+              @for (contestant of contestants;track contestant) {
+                <tr>
+                  <td class="text-center text-dark">
+                    {{ contestant.rank }}
+                  </td>
+                  <td>
+                    {{ contestant.username }}
+                  </td>
+                  <td class="text-center">
+            <span class="badge points">
+              {{ contestant.points }}
+            </span>
+                  </td>
+                  <td class="text-center">
+            <span class="badge badge-light-danger">
+              {{ contestant.penalties }}
+            </span>
+                  </td>
+                  @for (contestProblem of contestProblems;track contestProblem) {
+                    <td class="text-center">
+                      <ng-template
+                        #selfie [ngTemplateOutlet]="selfie"
+                        let-problemInfo="aVariable"
+                        [ngTemplateOutletContext]="{
+                    aVariable: getProblemInfoBySymbol(contestant.problemsInfo, contestProblem.symbol)
+                  }">
+                        <div>
+                          @if (problemInfo) {
+                            <div [innerHTML]="problemInfo.getHTML(contest)"></div>
+                          }
+                        </div>
+                      </ng-template>
+                    </td>
+                  }
+                </tr>
+              }
+            </ng-container>
+
+            <ng-container footer>
+              <tr>
+                <th class="text-center text-dark">#</th>
+                <th class="text-dark">{{ 'CONTESTS.CONTESTANT' | translate }}</th>
+                <th class="text-center text-dark">
+                  {{ 'CONTESTS.POINTS' | translate }}
+                </th>
+                <th class="text-center">{{ 'CONTESTS.PENALTIES' | translate }}</th>
+                @for (contestProblem of contestProblems;track contestProblem) {
+                  <th class="text-dark text-center">
+                    {{ contestProblem.symbol }}
+                    <br>
+                    <small>
+                      (<span class="text-success">{{ contestProblem.solved }}</span>/<span
+                      class="text-danger">{{ contestProblem.attemptUsersCount }}</span>/<span
+                      class="text-dark">{{ contestProblem.attemptsCount }}</span>)
+                    </small>
+                  </th>
+                }
+              </tr>
+            </ng-container>
+          </keen-table>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

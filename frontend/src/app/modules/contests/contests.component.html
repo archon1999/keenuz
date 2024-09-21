@@ -1,0 +1,16 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <h1 class="mt-1 mb-2 text-center">
+      <keen-icon color="primary" size="large-5" name="cup" type="duotone"></keen-icon>
+      <div class="text-dark mt-2 mb-2">{{ 'Menu.Contests' | translate }}</div>
+    </h1>
+
+    @if (isLoading) {
+      <div [style.height.px]="400">
+        <spinner></spinner>
+      </div>
+    } @else {
+      <contests-table [contests]="pageResult?.data"></contests-table>
+    }
+  </div>
+</div>

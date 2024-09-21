@@ -1,0 +1,36 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="getContentHeader()"></app-content-header>
+    <div class="row row gap-4">
+      <div class="col-8">
+        <kep-problem-filter/>
+        @if (isLoading) {
+          <div [style.height.px]="400">
+            <spinner/>
+          </div>
+        } @else {
+          <div class="mt-2">
+            @for (item of pageResult.data;track  item) {
+              <a [routerLink]="'/problem/1'">
+                <div class="card cursor-pointer">
+                  <div class="card-body">
+                    <h5 class="card-title"> {{ item.title }} </h5>
+                    <div class="card-text d-flex">
+                      <p
+                        [class]="item.difficulty == 1 ?  'text-success' : item.difficulty == 2 ? 'text-warning' : 'text-info'">{{ item.difficultyTitle }}</p>
+                      <p class="px-1"> - </p>
+                      <p>{{ item.categoryTitle }}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            }
+          </div>
+        }
+      </div>
+      <div class="col-4">
+        <kep-problem-catalog/>
+      </div>
+    </div>
+  </div>
+</div>

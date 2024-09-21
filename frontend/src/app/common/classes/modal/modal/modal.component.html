@@ -1,0 +1,15 @@
+<div class="modal-header border-none">
+  <h3 class="">{{ data.title | translate }}</h3>
+
+  <button
+    *ngIf="data.button"
+    (click)="close()"
+    class="btn close_btn bg-transparent border-none p-0"
+    type="button"
+  >
+    <keen-icon name="close"></keen-icon>
+  </button>
+</div>
+<div class="modal-body p-0">
+  <ng-template appHost></ng-template>
+</div>

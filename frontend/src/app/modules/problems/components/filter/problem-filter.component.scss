@@ -1,0 +1,14 @@
+::ng-deep {
+  .ng-select-searchable,
+  .ng-select-container,
+  .ng-dropdown-panel,
+  .ng-dropdown-panel-items,
+  .search-input {
+    //border-radius: 1rem !important;
+  }
+}
+
+.btn-outline-dark {
+  border: 1px solid #ccc !important;
+  color: #ccc;
+}

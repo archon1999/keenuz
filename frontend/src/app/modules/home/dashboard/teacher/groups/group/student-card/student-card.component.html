@@ -1,0 +1,45 @@
+<div class="table-responsive">
+  @if(isLoading)  {
+      <div style="min-height: 200px"><spinner></spinner></div>
+  }@else {
+    <table class="table">
+      <tr>
+        <th>Username</th>
+        <td>{{data.student.username}}</td>
+      </tr>
+      <tr>
+        <th>First Name</th>
+        <td>{{data.student.firstName}}</td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td>{{data.student.firstName}}</td>
+      </tr>
+      <tr>
+        <th>Result</th>
+        <td>{{data.student.result}}</td>
+      </tr>
+      <tr>
+        <th>Birthday</th>
+        <td>{{data.student.birthday}}</td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td>{{data.student.gender}}</td>
+      </tr>
+    </table>
+
+    <p-calendar
+      class="max-w-full"
+      [inline]="true"
+      [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+
+    >
+      <ng-template pTemplate="date" let-date>
+        <span class="py-25 px-1" style="border-radius: 10rem" [class]="getBgColor(date)" container="body" [ngbTooltip]="getTooltip(date)">
+            {{date.day}}
+        </span>
+      </ng-template>
+    </p-calendar>
+  }
+</div>

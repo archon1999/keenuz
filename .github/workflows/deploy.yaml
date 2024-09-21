@@ -1,0 +1,26 @@
+name: Deploy to Remote Server
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH
+        uses: appleboy/ssh-action@v0.1.1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/keen/frontend && git pull && npm run build-prod \
+            cd /home/keen/backend && git pull && poetry update \
+            systemctl restart keen

@@ -1,0 +1,43 @@
+@import '../keen-imports';
+
+$colors: (
+  'secondary': $secondary,
+  'primary': $primary,
+  'success': $green,
+  'info': $info,
+  'warning': $warning,
+  'danger': $red,
+  'yellow': $yellow,
+  'blue': $blue,
+  'brown': $brown,
+  'dark': $dark,
+);
+
+.dark-layout {
+  @each $color_name, $color in $colors {
+    $dark-color: mix(black, $color, 30);
+
+    .btn-#{$color_name} {
+      background-color: $dark-color !important;
+      border-color: $dark-color !important;
+    }
+
+    .badge.badge-#{$color_name} {
+      background-color: $dark-color;
+
+      &.badge-glow {
+        box-shadow: 0 0 5px $dark-color;
+      }
+    }
+
+    .bg-#{$color_name} {
+      background-color: $dark-color !important;
+
+      &.badge-glow {
+        box-shadow: 0 0 5px $dark-color !important;
+      }
+    }
+
+    --#{$color_name}: #{$dark-color};
+  }
+}

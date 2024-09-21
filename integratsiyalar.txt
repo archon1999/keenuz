@@ -1,0 +1,2 @@
+Google Analytics - user statistics
+Amazon S3 - media storage

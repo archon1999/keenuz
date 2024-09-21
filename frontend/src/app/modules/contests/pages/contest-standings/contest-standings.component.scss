@@ -1,0 +1,159 @@
+@import 'styles/keen-imports';
+
+app-contest-standings {
+  .contest-standings-top {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 9px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px white solid;
+
+    @include dark-layout {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px $dark solid;
+    }
+
+    .header {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      //margin-left: 1.2rem;
+      //margin-bottom: 2rem;
+    }
+  }
+
+  .bg-img {
+    position: absolute;
+    top: -66px;
+    width: 95%;
+    z-index: -1;
+    height: 520px;
+
+    filter: blur(60px);
+    opacity: .3;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: cover;
+  }
+
+  contestant-view, contestant-view div {
+    white-space: nowrap;
+  }
+
+  .rating-title-img {
+    margin-right: 5px !important;
+  }
+
+  .contest-time-sm {
+    font-size: 10px;
+  }
+
+  .less-code {
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  thead tr {
+    background: var(--bg-gradient) !important;
+    box-shadow: var(--box-shadow) !important;
+    color: var(--text-color);
+  }
+
+  span.points {
+    background: var(--bg) !important;
+    box-shadow: var(--box-shadow) !important;
+    color: var(--text-color);
+  }
+
+  span.problem-points {
+    background: var(--bg-light) !important;
+    color: var(--bg);
+  }
+
+  span.problem-points.the-best {
+    background: var(--bg) !important;
+    box-shadow: var(--box-shadow) !important;
+    color: var(--text-color);
+  }
+
+  th, td {
+    padding: 15px !important;
+  }
+
+  th:nth-child(1) {
+    min-width: 80px;
+  }
+
+  th {
+    border-bottom: none !important;
+    border-top: none !important;
+  }
+}
+
+
+@mixin define-contest-colors($selector, $color, $background-light, $background-dark, $color-dark: false) {
+  @if ($selector == '&') {
+    body {
+      --contest-color: #{$color};
+      --contest-color-light: #{rgba($color, 0.1)};
+    }
+  } @else {
+    body:has(#{unquote(string.slice($selector, 2))}) {
+      --contest-color: #{$cgit olor};
+      --contest-color-light: #{rgba($color, 0.1)};
+
+      .tooltip {
+        .arrow:before {
+          border-top-color: #f3effc;
+        }
+
+        .tooltip-inner {
+          background-color: mix(black, $color, 30) !important;
+        }
+      }
+    }
+  }
+
+  .contests-colors {
+    #{$selector} {
+      --bg: #{$color};
+      --bg-gradient: #{$background-light};
+      --box-shadow: 0 0 5px #{$color};
+      --text-color: white;
+      --bg-light: #{mix(white, $color, 90)};
+
+      .contest-color {
+        color: $color !important;
+      }
+
+      .contest-bg-color {
+        background-color: $color !important;
+      }
+      @content;
+    }
+
+    @include dark-layout() {
+      #{$selector} {
+        --bg-gradient: #{$background-dark};
+        --box-shadow: 0 0 5px #{$color};
+        --bg-light: #{mix(black, $color, 60)};
+
+        @if $background-dark != false {
+          --bg: #{$color-dark};
+        }
+      }
+    }
+  }
+}
+
+@include define-contest-colors(
+  $selector: '&',
+  $color: $primary,
+  $color-dark: mix(black, $primary, 20),
+  $background-light: linear-gradient(to right, mix(white, $primary, 20), mix(white, $primary, 30)),
+  $background-dark: linear-gradient(to right, mix(black, $primary, 50), mix(black, $primary, 30)),
+);
