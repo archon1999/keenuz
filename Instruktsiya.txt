@@ -1,0 +1,12 @@
+Frontend - http://193.164.17.34:8080/
+
+Teacher Role
+Login - davronov_m
+Parol - kxzV32g3PvndXHN
+
+
+Backend - http://193.164.17.34:8008/
+
+Admin Role
+Login - odmin
+Parol - 123
