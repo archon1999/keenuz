@@ -5,7 +5,7 @@ Login - davronov_m
 Parol - kxzV32g3PvndXHN
 
 
-Backend - http://193.164.17.34:8008/
+Backend - http://193.164.17.34:8008/admin/
 
 Admin Role
 Login - odmin
