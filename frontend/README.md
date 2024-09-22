@@ -1,92 +1,204 @@
-# Het Legal Cabinet
+
+# **KEEN.uz Platform**
+
+**KEEN.uz** is an innovative educational platform designed to empower teachers, students, and IT enthusiasts through task management, competitive programming, and skill-building. It focuses on improving educational systems by integrating digital tools for task assignments, student monitoring, and competition organization. The platform supports a **Software as a Service (SaaS)** model, offering subscription-based access for educational institutions, with a built-in incentive system, **KEENCOIN**, to gamify the learning experience.
+
+---
+
+## **Table of Contents**
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Monetization & Business Model](#monetization--business-model)
+- [Troubleshooting](#troubleshooting)
+- [FAQ](#faq)
+- [Maintainers](#maintainers)
+
+---
+
+## **Introduction**
+
+KEEN.uz is an educational platform focused on:
+- **Students:** Learning and improving programming skills, completing tasks, and participating in competitions.
+- **Teachers:** Managing students, assigning daily tasks, monitoring performance, and organizing competitions.
+- **Institutions:** Offering structured and gamified learning experiences.
+- **Incentives:** Students earn **KEENCOIN** by completing tasks and winning competitions, motivating continuous learning.
+
+This platform helps educational systems move toward a digital, competitive, and engaging programming culture, preparing students for regional and global IT challenges.
+
+---
+
+## **Features**
+
+1. **User Roles:**
+   - **Super Admin:** Oversees the platform, manages users and teachers.
+   - **Teacher:** Manages groups of students, assigns tasks, tracks progress, and organizes competitions.
+   - **Student:** Completes tasks, views ratings, and participates in competitions.
+   - **User:** Accesses basic features of the platform.
+
+2. **KEENCOIN Currency:**
+   - Virtual currency to incentivize learning.
+   - Students earn KEENCOIN through tasks and competitions.
+   - Can be used to rank students and unlock platform features.
+
+3. **Task Management:**
+   - Teachers assign and monitor student tasks daily.
+   - Students submit tasks and track their progress.
+
+4. **Competitions and Tournaments:**
+   - Teachers organize group-level or student-level competitions.
+   - Ranking system allows students to see their position relative to peers.
+
+5. **Subscription-Based Model (SaaS):**
+   - **Monthly:** 100,000 soums.
+   - **Quarterly:** 250,000 soums.
+   - **Yearly:** 900,000 soums.
+
+---
+
+## **Requirements**
+
+- **Node.js** >= 14.x
+- **Angular CLI** >= 17.3.9
+- **MySQL** or compatible relational database
+- **Bootstrap** 5.x
+- **Session Authentication** using JWT
+- **Git** for version control
+- **Docker** (optional for containerization)
+
+---
+
+## **Installation**
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-repo/keenuz-platform.git
+   cd keenuz-platform
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   Create a `.env` file with your database credentials and session secret keys.
+
+4. **Database setup:**
+   - Ensure your MySQL instance is running.
+   - Run migrations to set up the schema:
+     ```bash
+     npm run db:migrate
+     ```
+
+5. **Run the development server:**
+   ```bash
+   ng serve
+   ```
+
+6. **Access the platform:**
+   - Visit `http://localhost:4200/` in your browser.
+
+---
+
+## **Usage**
+
+### **Frontend:**
+- **Built with Angular and Bootstrap** for responsive and dynamic UI.
+- Modify the frontend in the `src/` directory to customize components, styles, and functionality.
+
+### **Backend:**
+- **Session-based authentication** is managed via JWT tokens.
+- Secure all routes and ensure role-based access (Super Admin, Teacher, Student, and User).
+
+### **KEENCOIN Setup:**
+- Modify KEENCOIN rewards in the teacher’s dashboard under the "Incentives" section.
+- Manage conversion rates in the admin panel (`1 KEENCOIN = 500 soums`).
+
+### **Competition & Task Management:**
+- Teachers create groups of students and assign tasks from the dashboard.
+- Competitions can be organized via the "Competitions" module, which supports individual and group tournaments.
+
+---
+
+## **Configuration**
+
+1. **Frontend Configuration:**
+   - Located in `src/environments/`.
+   - Customize UI/UX and integration with backend API.
+
+2. **Backend (Session Authentication):**
+   - JWT configurations can be adjusted in `src/app/auth/`.
+   - Modify session timeout and refresh tokens according to your security policies.
+
+3. **Database:**
+   - MySQL configuration is set in the `.env` file.
+   - Use the `db:migrate` command for updating schema or applying migrations.
+
+4. **Subscription Tiers:**
+   - Modify subscription pricing and packages in `admin/settings/subscriptions`.
+
+---
+
+## **Monetization & Business Model**
+
+KEEN.uz operates on a **SaaS model**, offering subscriptions for educational institutions to gain full access to the platform.
+
+### **Subscription Plans:**
+- **Monthly:** 100,000 soums.
+- **Yearly:** 900,000 soums.
+
+### **KEENCOIN System:**
+- Teachers can award KEENCOIN to students for task completion or competition wins.
+- **KEENCOIN** encourages students to continue learning and enhances their engagement with the platform.
+
+### **Target Audience:**
+- **Educational Systems:** Schools and universities purchasing subscriptions for teachers to use the platform.
+- **Teachers:** Managing student groups, tasks, and progress.
+- **Students:** Enhancing programming skills and competing with peers.
+
+---
 
 
+---
 
-## Getting started
+## **Troubleshooting**
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+1. **Database Connection Errors:**
+   - Ensure MySQL is running and accessible.
+   - Verify credentials in the `.env` file.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+2. **Authentication Issues:**
+   - Ensure that JWT secret keys are configured correctly.
+   - Clear browser cookies and try logging in again.
 
-## Add your files
+3. **UI Not Loading:**
+   - Check Angular build logs for errors.
+   - Verify that the server is running on the correct port (`4200`).
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+---
 
-```
-cd existing_repo
-git remote add origin https://u-gitlab.uzinfocom.uz/het-billing-system/het-legal-cabinet.git
-git branch -M main
-git push -uf origin main
-```
+## **FAQ**
 
-## Integrate with your tools
+### What is the primary role of KEENCOIN?
+KEENCOIN is used to encourage students to complete tasks and participate in competitions. It also provides a rating system for ranking students.
 
-- [ ] [Set up project integrations](https://u-gitlab.uzinfocom.uz/het-billing-system/het-legal-cabinet/-/settings/integrations)
+### How does the SaaS subscription work?
+Educational institutions (schools and universities) subscribe to the platform and provide access to teachers and students.
 
-## Collaborate with your team
+### Can users without subscriptions access the platform?
+Yes, users and students can browse without subscription, but subscription is required for full access to task management and competition modules.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+---
 
-## Test and Deploy
+## **Maintainers**
 
-Use the built-in continuous integration in GitLab.
+- **Lead Developer:** Nazarbek Baltabaev (archon99@gmail.com)
+- **Project Manager:** Murodjon Davronov (murodjon_davronov@gmail.com)
+- **UI/UX Designer:** Olimboy Shavkatov (shavkatov_olimboy@gmail.com)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+For support or any questions, please contact the project team at `https://t.me/+vTKfWco9PARjZWQy`.
